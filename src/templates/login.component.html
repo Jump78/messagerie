@@ -1,0 +1,8 @@
+<form method="post" action = "#">
+	<input #email type="email" id="email" name="email"/>
+	<input #password type="password" id="password" name="password"/>
+</form>
+
+<button (click)="signUp(email.value,password.value)">Sign up</button>
+<button (click)="login(email.value,password.value)">Login</button>
+<button (click)="logout()">Logout</button>

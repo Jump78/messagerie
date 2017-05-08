@@ -1,7 +1,10 @@
 <h1>
   {{title}}
 </h1>
-<aside class="left">
+<router-outlet></router-outlet>
+
+
+<!-- <aside class="left">
 	<ul *ngIf="friends" class="friendlist">
 		<li *ngFor="let friend of friends">
 			<a href="#" (click) = "onSelectedFriend(friend)">{{friend.name}}</a>
@@ -12,3 +15,5 @@
 <private-msg [friend] = "selectedFriend"></private-msg>
 
 <div class="clearBoth"></div>
+
+<co></co> -->

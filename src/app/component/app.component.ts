@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Friend } from './friend';
+
+import { Friend } from '../entity/friend';
 
 const FRIENDS: Friend[] = [
 	{
@@ -11,8 +12,8 @@ const FRIENDS: Friend[] = [
 
 @Component({
   selector: 'app-root',
-  templateUrl: '../templates/app.component.html',
-  styleUrls: ['../styles/app.component.css']
+  templateUrl: '../../templates/app.component.html',
+  styleUrls: ['../../styles/app.component.css']
 })
 export class AppComponent {
   title = 'Messagerie Chelou';

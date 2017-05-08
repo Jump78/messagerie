@@ -1,8 +1,16 @@
 <div *ngIf="friend" class="message">
 	<div class="receivedMessage">
-		koukou
+		<ul>
+			<li *ngFor = "let msg of messages |async " >
+				<p>{{msg.id}}</p>
+				<p>{{msg.content}}</p>
+				<p>{{msg.timestamp | date }}</p>
+			</li>
+		</ul>
 	</div>
+	
 	<form action="#" method="post" class="messageForm">
-		<textarea name="sendMessage" id="sendMessage" cols="30" rows="10" class="sendMessage"></textarea>
+		<textarea #writeMessage id="writeMessage" class="writeMessage"></textarea>
+		<input #sendMessage type="submit" (click) = "save(writeMessage.value)">
 	</form>
 </div>
