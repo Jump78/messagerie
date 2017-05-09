@@ -1,0 +1,11 @@
+<aside class="left">
+	<ul *ngIf="friends" class="friendlist">
+		<li *ngFor="let friend of friends">
+			<a href="#" (click) = "onSelectedFriend(friend)">{{friend.name}}</a>
+		</li>
+	</ul>
+</aside>
+
+<tchat [friend] = "selectedFriend"></tchat>
+
+<div class="clearBoth"></div>

@@ -1,4 +1,6 @@
+<div> {{ (user | async)?.email }} </div>
 <form method="post" action = "#">
+	<p *ngIf="msg">{{msg}}</p>
 	<input #email type="email" id="email" name="email"/>
 	<input #password type="password" id="password" name="password"/>
 </form>

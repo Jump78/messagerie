@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { AngularFireAuth } from 'angularfire2/auth';
-import * as firebase from 'firebase/app';
+import { Router } from '@angular/router';
+
+import { AccountService } from '../service/account.service';
 
 @Component({
   selector: 'co',
@@ -9,21 +9,37 @@ import * as firebase from 'firebase/app';
 })
 export class ConnectionComponent {
 
-  user: Observable<firebase.User>;
+  user;
+  msg: string;
+  accountService: AccountService;
+  router: Router;
 
-  constructor(public afAuth: AngularFireAuth) {
-    this.user = afAuth.authState;
+  constructor(accountService: AccountService, router: Router) {
+    this.accountService = accountService;
+    this.router = router;
   }
 
-  signUp(email,password){
-    this.afAuth.auth.createUserWithEmailAndPassword(email,password);
+  async signUp(email: string, password: string){
+    let result = await this.accountService.signUp(email, password);
+
+    if (!result.error) {
+      this.router.navigate(['tchat']);
+    }else{
+      this.msg = result.message;
+    }
   }
 
-  login(email,password) {
-    this.afAuth.auth.signInWithEmailAndPassword(email,password);
+  async login(email: string, password: string) {
+    let result = await this.accountService.login(email, password);
+
+    if (!result.error) {
+      this.router.navigate(['tchat']);
+    }else{
+      this.msg = result.message;
+    }
   }
 
   logout() {
-    this.afAuth.auth.signOut();
+    this.accountService.logout();
   }
 }

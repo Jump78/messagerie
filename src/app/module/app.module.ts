@@ -11,15 +11,19 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../../environments/environment';
 
 import { AppComponent } from '../component/app.component';
-import { PrivateMessageComponent } from '../component/privateMessage.component'
+import { TchatComponent } from '../component/tchat.component'
+import { FriendlistCommponent } from '../component/friendlist.component'
 import { ConnectionComponent } from '../component/connection.component'
+
 import { MessageService } from '../service/message.service'
+import { AccountService } from '../service/account.service'
 
 @NgModule({
   declarations: [
     AppComponent,
-    PrivateMessageComponent,
-    ConnectionComponent
+    TchatComponent,
+    ConnectionComponent,
+    FriendlistCommponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +35,8 @@ import { MessageService } from '../service/message.service'
     AppRoutingModule
   ],
   providers: [
-    MessageService
+    MessageService,
+    AccountService
   ],
   bootstrap: [AppComponent]
 })
