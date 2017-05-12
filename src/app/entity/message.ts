@@ -13,7 +13,6 @@ export class Message {
 				this['set'+toCapitalize(i)](data[i]);
 			}
 		}
-
 		return this;
 	}
 
@@ -36,7 +35,6 @@ export class Message {
 	}
 
 	public setContent(content: string): Message{
-		console.log(this);
 		this.content = content;
 
 		return this;

@@ -6,7 +6,7 @@ import * as firebase from 'firebase/app';
 @Injectable()
 export class AccountService {
 
-  private user: Observable<firebase.User>;
+  private user;
 
   constructor(public afAuth: AngularFireAuth) {
     this.user = afAuth.authState;
@@ -16,7 +16,8 @@ export class AccountService {
     let response;
 
     await this.afAuth.auth.createUserWithEmailAndPassword(email,password)
-      .then(()=>{
+      .then((r)=>{
+        this.user = r;
         response = {
           error : false,
           message : 'Succesfull sign up'
@@ -36,7 +37,9 @@ export class AccountService {
     let response;
 
     await this.afAuth.auth.signInWithEmailAndPassword(email,password)
-      .then(()=>{
+      .then((r)=>{
+        this.user = r;
+        console.log(r);
         response = {
           error : false,
           message : 'Succesfull login'
@@ -58,5 +61,13 @@ export class AccountService {
 
   getUser(){
     return this.user;
+  }
+
+  isLoggedIn(){
+    if (this.user.uid) {
+       return true;
+    }
+
+    return false;
   }
 }

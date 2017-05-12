@@ -31,7 +31,6 @@ export class ConnectionComponent {
 
   async login(email: string, password: string) {
     let result = await this.accountService.login(email, password);
-
     if (!result.error) {
       this.router.navigate(['tchat']);
     }else{

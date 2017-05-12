@@ -4,9 +4,11 @@ import { Friend } from '../entity/friend';
 
 const FRIENDS: Friend[] = [
 	{
-		name: 'Richard'
+		name: 'Richard',
+		id: 1
 	},{
-		name: 'José'
+		name: 'José',
+		id: 2
 	}
 ]
 
@@ -14,10 +16,16 @@ const FRIENDS: Friend[] = [
 	selector: 'friendlist',
 	templateUrl: '../../templates/friendlist.component.html',
 	styles: [`
-		.message{
-			float: left;
-			padding: 0% 2%;
+		.selected{
+			color: red;
 		}
+		.left{
+			float:left;
+		}
+		.clearBoth{
+			clear: both;
+		}
+
 	`]
 })
 

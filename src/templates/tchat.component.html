@@ -1,9 +1,4 @@
-<div>tchat</div>
-
-<friendlist></friendlist>
-
-<div> {{ (user | async)?.email }} </div>
-<div *ngIf="friend" class="message">
+<div *ngIf="friend" class="message" >
 	<div class="receivedMessage">
 		<ul>
 			<li *ngFor = "let msg of messages | async " >

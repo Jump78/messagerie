@@ -1,8 +1,6 @@
 <aside class="left">
 	<ul *ngIf="friends" class="friendlist">
-		<li *ngFor="let friend of friends">
-			<a href="#" (click) = "onSelectedFriend(friend)">{{friend.name}}</a>
-		</li>
+		<li *ngFor="let friend of friends" (click) = "onSelectedFriend(friend)" [class.selected]=" friends === selectedFriend">{{friend.name}}</li>
 	</ul>
 </aside>
 

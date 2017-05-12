@@ -10,13 +10,33 @@ import { Message } from '../entity/message';
 export class MessageService{
  
 	private messages: FirebaseListObservable<any>;
+	private db;
 
 	constructor(db: AngularFireDatabase) {
+		this.db = db;
 		this.messages = db.list('/messages');
 	}
 
 	index(){
 		return this.messages;
+	}
+
+	findAllMessageById(idSender: string){
+		console.log(typeof idSender);
+		return this.db.list('/messages', {
+				    query: {
+				    	equalTo: {
+				    		key:  'senderId',
+				    		value: idSender
+				    	}
+				    }
+			    });
+	}	
+
+	findAllMessageByIdSenderAndRecipient(idSender: number,idRecipient: number){
+		this.db.list('/messages',{
+			equalTo: idSender	
+		})
 	}
 
 	save(message: Message){

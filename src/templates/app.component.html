@@ -1,4 +1,7 @@
 <h1>
   {{title}}
 </h1>
+<p>
+	{{(user | async )?.uid}}
+</p>
 <router-outlet></router-outlet>
